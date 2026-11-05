@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.ejercicio_6.controlador.OperacionesController"
+            styleClass="pantalla">
+
+    <top>
+        <VBox spacing="7" styleClass="cabecera">
+
+            <padding>
+                <Insets top="26" right="30" bottom="24" left="30"/>
+            </padding>
+
+            <Label text="Operaciones del servicio"
+                   styleClass="titulo"/>
+
+            <Label fx:id="etiquetaSeleccion"
+                   styleClass="subtitulo"/>
+
+        </VBox>
+    </top>
+
+    <center>
+        <HBox spacing="24">
+
+            <padding>
+                <Insets top="26" right="30" bottom="22" left="30"/>
+            </padding>
+
+            <VBox spacing="18"
+                  prefWidth="330"
+                  minWidth="310"
+                  maxWidth="350">
+
+                <Label text="Preparar solicitud"
+                       styleClass="seccion"/>
+
+                <VBox spacing="7">
+
+                    <Label text="Operación"
+                           styleClass="campo-etiqueta"/>
+
+                    <ComboBox fx:id="selectorOperacion"
+                              maxWidth="Infinity"/>
+
+                </VBox>
+
+                <VBox fx:id="bloqueMonto" spacing="7">
+
+                    <Label text="Monto"
+                           styleClass="campo-etiqueta"/>
+
+                    <TextField fx:id="campoMonto"
+                               promptText="Por ejemplo 150.50"/>
+
+                </VBox>
+
+                <VBox fx:id="bloqueReferencia" spacing="7">
+
+                    <Label fx:id="etiquetaReferencia"
+                           text="Referencia"
+                           styleClass="campo-etiqueta"/>
+
+                    <TextField fx:id="campoReferencia"
+                               promptText="Compra, documento o paquete"/>
+
+                </VBox>
+
+                <Label fx:id="etiquetaAyuda"
+                       wrapText="true"
+                       styleClass="ayuda"/>
+
+                <Button text="Ejecutar operación"
+                        onAction="#ejecutarOperacion"
+                        maxWidth="Infinity"
+                        styleClass="primario"/>
+
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <Button text="Volver al catálogo"
+                        onAction="#volver"
+                        maxWidth="Infinity"
+                        styleClass="secundario"/>
+
+            </VBox>
+
+            <VBox spacing="12" HBox.hgrow="ALWAYS">
+
+                <Label text="Resultado"
+                       styleClass="seccion"/>
+
+                <TextArea fx:id="areaResultado"
+                          editable="false"
+                          wrapText="true"
+                          promptText="El resultado de la solicitud aparecerá aquí."
+                          styleClass="salida"
+                          VBox.vgrow="ALWAYS"/>
+
+                <Label text="Los documentos y movimientos generados pertenecen al entorno de demostración."
+                       wrapText="true"
+                       styleClass="ayuda"/>
+
+            </VBox>
+
+        </HBox>
+    </center>
+
+    <bottom>
+        <Label fx:id="etiquetaEstado"
+               text="Seleccione la operación e ingrese los datos solicitados."
+               wrapText="true"
+               styleClass="feedback"/>
+    </bottom>
+
+</BorderPane>
