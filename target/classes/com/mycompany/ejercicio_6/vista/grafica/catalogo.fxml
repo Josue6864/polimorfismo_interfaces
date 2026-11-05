@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.ejercicio_6.controlador.CatalogoController"
+            prefWidth="1180"
+            prefHeight="760"
+            styleClass="pantalla">
+
+    <top>
+        <VBox spacing="18" styleClass="cabecera">
+
+            <padding>
+                <Insets top="26" right="30" bottom="24" left="30"/>
+            </padding>
+
+            <HBox alignment="CENTER_LEFT" spacing="18">
+
+                <VBox spacing="5" HBox.hgrow="ALWAYS">
+                    <Label text="Integraciones externas"
+                           styleClass="titulo"/>
+
+                    <Label text="Pagos, logística y facturación en un mismo catálogo"
+                           styleClass="subtitulo"/>
+                </VBox>
+
+                <Label text="ENTORNO DE DEMOSTRACIÓN"
+                       styleClass="insignia"/>
+
+            </HBox>
+
+            <Label fx:id="etiquetaResumen"
+                   styleClass="resumen"/>
+
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="16">
+
+            <padding>
+                <Insets top="24" right="30" bottom="18" left="30"/>
+            </padding>
+
+            <HBox spacing="10" alignment="CENTER_LEFT">
+
+                <TextField fx:id="campoIdentificador"
+                           promptText="Buscar por ID, por ejemplo PAG-01"
+                           prefWidth="340"
+                           onAction="#buscar"/>
+
+                <Button text="Buscar"
+                        onAction="#buscar"
+                        styleClass="secundario"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button text="Ordenar por latencia"
+                        onAction="#ordenar"
+                        styleClass="secundario"/>
+
+            </HBox>
+
+            <TableView fx:id="tablaIntegraciones"
+                       VBox.vgrow="ALWAYS">
+
+                <columns>
+
+                    <TableColumn fx:id="columnaId"
+                                 text="Identificador"
+                                 prefWidth="105"
+                                 minWidth="90"
+                                 sortable="false"/>
+
+                    <TableColumn fx:id="columnaNombre"
+                                 text="Integración"
+                                 prefWidth="220"
+                                 minWidth="185"
+                                 sortable="false"/>
+
+                    <TableColumn fx:id="columnaTipo"
+                                 text="Tipo"
+                                 prefWidth="185"
+                                 minWidth="155"
+                                 sortable="false"/>
+
+                    <TableColumn fx:id="columnaProveedor"
+                                 text="Proveedor"
+                                 prefWidth="165"
+                                 minWidth="135"
+                                 sortable="false"/>
+
+                    <TableColumn fx:id="columnaConexion"
+                                 text="Conexión"
+                                 prefWidth="140"
+                                 minWidth="115"
+                                 sortable="false"/>
+
+                    <TableColumn fx:id="columnaLatencia"
+                                 text="Latencia"
+                                 prefWidth="130"
+                                 minWidth="105"
+                                 sortable="false"/>
+
+                </columns>
+
+            </TableView>
+
+            <HBox spacing="12" alignment="CENTER_LEFT">
+
+                <Label text="Seleccione una fila o haga doble clic para consultar su detalle."
+                       styleClass="ayuda"
+                       HBox.hgrow="ALWAYS"
+                       wrapText="true"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+
+                <Button text="Ver detalle"
+                        onAction="#abrirDetalle"
+                        styleClass="secundario"/>
+
+                <Button text="Abrir operaciones"
+                        onAction="#abrirOperaciones"
+                        styleClass="primario"/>
+
+            </HBox>
+
+        </VBox>
+    </center>
+
+    <bottom>
+        <Label fx:id="etiquetaEstado"
+               text="Catálogo disponible. Puede buscar, ordenar o seleccionar una integración."
+               wrapText="true"
+               styleClass="feedback"/>
+    </bottom>
+
+</BorderPane>

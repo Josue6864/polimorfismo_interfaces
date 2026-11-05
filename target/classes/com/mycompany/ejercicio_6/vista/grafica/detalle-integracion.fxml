@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.mycompany.ejercicio_6.controlador.DetalleIntegracionController"
+            styleClass="pantalla">
+
+    <top>
+        <VBox spacing="7" styleClass="cabecera">
+
+            <padding>
+                <Insets top="26" right="30" bottom="24" left="30"/>
+            </padding>
+
+            <Label text="Detalle y auditoría"
+                   styleClass="titulo"/>
+
+            <Label fx:id="etiquetaSeleccion"
+                   styleClass="subtitulo"/>
+
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="18">
+
+            <padding>
+                <Insets top="24" right="30" bottom="18" left="30"/>
+            </padding>
+
+            <TabPane tabClosingPolicy="UNAVAILABLE"
+                     VBox.vgrow="ALWAYS">
+
+                <tabs>
+
+                    <Tab text="Configuración">
+                        <VBox spacing="12">
+
+                            <padding>
+                                <Insets top="18"
+                                        right="12"
+                                        bottom="12"
+                                        left="12"/>
+                            </padding>
+
+                            <Label text="Parámetros de la integración"
+                                   styleClass="seccion"/>
+
+                            <TextArea fx:id="areaConfiguracion"
+                                      editable="false"
+                                      wrapText="true"
+                                      styleClass="salida"
+                                      VBox.vgrow="ALWAYS"/>
+
+                        </VBox>
+                    </Tab>
+
+                    <Tab text="Auditoría">
+                        <VBox spacing="12">
+
+                            <padding>
+                                <Insets top="18"
+                                        right="12"
+                                        bottom="12"
+                                        left="12"/>
+                            </padding>
+
+                            <HBox alignment="CENTER_LEFT" spacing="12">
+
+                                <Label text="Registro local de eventos"
+                                       styleClass="seccion"/>
+
+                                <Region HBox.hgrow="ALWAYS"/>
+
+                                <Button text="Actualizar auditoría"
+                                        onAction="#actualizarAuditoria"
+                                        styleClass="secundario"/>
+
+                            </HBox>
+
+                            <TextArea fx:id="areaAuditoria"
+                                      editable="false"
+                                      wrapText="true"
+                                      styleClass="salida"
+                                      VBox.vgrow="ALWAYS"/>
+
+                        </VBox>
+                    </Tab>
+
+                </tabs>
+
+            </TabPane>
+
+            <HBox spacing="12" alignment="CENTER_RIGHT">
+
+                <Button text="Volver al catálogo"
+                        onAction="#volver"
+                        styleClass="secundario"/>
+
+                <Button text="Abrir operaciones"
+                        onAction="#abrirOperaciones"
+                        styleClass="primario"/>
+
+            </HBox>
+
+        </VBox>
+    </center>
+
+    <bottom>
+        <Label fx:id="etiquetaEstado"
+               text="La auditoría permanece disponible aunque la integración esté desconectada."
+               wrapText="true"
+               styleClass="feedback"/>
+    </bottom>
+
+</BorderPane>
